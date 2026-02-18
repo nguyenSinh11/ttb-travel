@@ -1,0 +1,179 @@
+[
+  {
+    "id": "ha-long-3n2d",
+    "title": "Ha Long 3D2N – Cruise & Heritage Bay",
+    "priceFrom": 3990000,
+    "duration": "3D2N",
+    "location": "Quang Ninh",
+    "highlights": [
+      "5-star cruise",
+      "Sung Sot Cave",
+      "Kayaking",
+      "Fishing village"
+    ],
+    "cover": "/images/tours/halong.jpg",
+    "gallery": [
+      "/images/tours/halong1.jpg",
+      "/images/tours/halong2.jpg",
+      "/images/tours/halong3.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "desc": "Hanoi – Ha Long, cruise check-in, cave exploration."
+      },
+      {
+        "day": "Day 2",
+        "desc": "Kayaking, fishing village visit, dinner party on board."
+      },
+      {
+        "day": "Day 3",
+        "desc": "Brunch, return to Hanoi."
+      }
+    ],
+    "includes": [
+      "Round-trip transfer",
+      "Entrance tickets",
+      "Tour guide",
+      "Meals as per itinerary"
+    ],
+    "excludes": [
+      "Personal expenses",
+      "VAT",
+      "Tips"
+    ]
+  },
+  {
+    "id": "da-nang-4n3d",
+    "title": "Da Nang – Ba Na – Hoi An 4D3N",
+    "priceFrom": 4590000,
+    "duration": "4D3N",
+    "location": "Da Nang",
+    "highlights": [
+      "Golden Bridge",
+      "My Khe Beach",
+      "Hoi An Ancient Town"
+    ],
+    "cover": "/images/tours/dadang3.jpg",
+    "gallery": [
+      "/images/tours/dandan1.jpg",
+      "/images/tours/danang1.png",
+      "/images/tours/dandan2.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "desc": "Arrival in Da Nang, visit My Khe Beach."
+      },
+      {
+        "day": "Day 2",
+        "desc": "Ba Na Hills – Golden Bridge."
+      },
+      {
+        "day": "Day 3",
+        "desc": "Hoi An – lantern floating experience."
+      },
+      {
+        "day": "Day 4",
+        "desc": "Shopping – airport transfer."
+      }
+    ],
+    "includes": [
+      "Hotel accommodation",
+      "Entrance tickets",
+      "Meals as per itinerary"
+    ],
+    "excludes": [
+      "Airfare",
+      "Personal expenses"
+    ]
+  },
+  {
+    "id": "sapa-3n2d",
+    "title": "Sapa 3D2N – Fansipan & Cat Cat Village",
+    "priceFrom": 3690000,
+    "duration": "3D2N",
+    "location": "Lao Cai",
+    "highlights": [
+      "Fansipan Peak",
+      "Cat Cat Village",
+      "Ham Rong Mountain",
+      "Sapa Night Market"
+    ],
+    "cover": "/images/tours/Sapa4.jpg",
+    "gallery": [
+      "/images/tours/Sapa1.jpg",
+      "/images/tours/Sapa2.jpg",
+      "/images/tours/Sapa3.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "desc": "Hanoi – Sapa, visit Cat Cat Village."
+      },
+      {
+        "day": "Day 2",
+        "desc": "Conquer Fansipan – the Roof of Indochina."
+      },
+      {
+        "day": "Day 3",
+        "desc": "Ham Rong Mountain – return to Hanoi."
+      }
+    ],
+    "includes": [
+      "Sleeper bus",
+      "3-4 star hotel",
+      "Fansipan cable car ticket"
+    ],
+    "excludes": [
+      "Personal expenses",
+      "Tips"
+    ]
+  },
+  {
+    "id": "ha-giang-4n3d",
+    "title": "Ha Giang 4D3N – Dong Van Karst Plateau",
+    "priceFrom": 4990000,
+    "duration": "4D3N",
+    "location": "Ha Giang",
+    "highlights": [
+      "Ma Pi Leng Pass",
+      "Lung Cu Flag Tower",
+      "Tham Ma Slope",
+      "Nho Que River"
+    ],
+    "cover": "/images/tours/Hagiang.jpg",
+    "gallery": [
+      "/images/tours/hagiang1.jpg",
+      "/images/tours/hagiang2.jpg",
+      "/images/tours/hagiang3.jpg"
+    ],
+    "itinerary": [
+      {
+        "day": "Day 1",
+        "desc": "Hanoi – Ha Giang, visit Quan Ba."
+      },
+      {
+        "day": "Day 2",
+        "desc": "Dong Van – Ma Pi Leng – Nho Que River."
+      },
+      {
+        "day": "Day 3",
+        "desc": "Lung Cu – Dong Van Old Quarter."
+      },
+      {
+        "day": "Day 4",
+        "desc": "Return to Hanoi."
+      }
+    ],
+    "includes": [
+      "Round-trip transfer",
+      "Hotel accommodation",
+      "Entrance tickets"
+    ],
+    "excludes": [
+      "Personal expenses",
+      "VAT"
+    ]
+  }
+]

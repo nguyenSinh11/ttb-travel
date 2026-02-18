@@ -1,0 +1,68 @@
+[
+  {
+    "id": "vietnam-en-immersion",
+    "title": "VIETNAM EN IMMERSION",
+    "subtitle": "Meet • Share • Discover",
+    "excerpt": "Discover Vietnam on a deeper level: meet locals, share meaningful moments, and experience authentic culture.",
+    "category": "Immersion",
+    "cover": "/images/tours/dandan2.jpg",
+    "gallery": [
+      "/images/news/VietNam1.jpeg",
+      "/images/news/Vietnam2.jpg"
+    ],
+    "body": [
+      {
+        "heading": "HOMESTAY IN HOANG SU PHI",
+        "text": "This journey takes you through breathtaking valleys and terraced rice fields. You will stay with local families, share meals, work together, and listen to everyday life stories — a rare experience that typical tours simply cannot offer."
+      },
+      {
+        "heading": "Host Portrait",
+        "text": "Your host is a local resident who has been deeply connected to this land since childhood. They warmly welcome visitors with genuine hospitality, helping you understand highland traditions, lifestyle, and culture."
+      },
+      {
+        "heading": "Accommodation",
+        "text": "Simple yet cozy lodging with open views of terraced rice fields and lush nature. Fully equipped for a comfortable stay, while preserving the true spirit of living like a local."
+      }
+    ]
+  },
+  {
+    "id": "sejours-chez-lhabitant",
+    "title": "HOMESTAY EXPERIENCES",
+    "subtitle": "Live Close to the Locals",
+    "excerpt": "Stay with local families to discover a more authentic side of Vietnam — beyond the cities.",
+    "category": "Stay",
+    "cover": "/images/news/nguoidan3.jpg",
+    "gallery": [
+      "/images/news/nguoidan2.jpg",
+      "/images/news/nguoidan1.jpg"
+    ],
+    "body": [
+      {
+        "heading": "Why Choose This Stay?",
+        "text": "This experience allows you to truly connect with local life: family meals, village stories, and hidden paths untouched by mass tourism."
+      },
+      {
+        "heading": "Our Commitment",
+        "text": "We prioritize sustainable tourism: respecting local communities, reducing plastic waste, and creating fair economic opportunities."
+      }
+    ]
+  },
+  {
+    "id": "hoang-su-phi",
+    "title": "HOANG SU PHI",
+    "subtitle": "In the Heart of Terraced Rice Fields",
+    "excerpt": "Golden harvest season, layered rice terraces — one of the most stunning landscapes in Northern Vietnam.",
+    "category": "Destination",
+    "cover": "/images/slider/HOANGSUPHI1.jpg",
+    "gallery": [
+      "/images/news/hoangsuphi2.jpg",
+      "/images/news/hoangsuphi3.jpg"
+    ],
+    "body": [
+      {
+        "heading": "Highlights",
+        "text": "Light trekking, cloud hunting, local cuisine experiences, and captivating stories of highland culture."
+      }
+    ]
+  }
+]
