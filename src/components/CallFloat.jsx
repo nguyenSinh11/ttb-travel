@@ -11,9 +11,7 @@ export default function CallFloat({
   return (
     <a
       href={`tel:${tel}`}
-      className={`fixed bottom-5 ${
-        isLeft ? "left-5" : "right-5"
-      } z-50 group select-none`}
+      className={`fixed bottom-5 ${isLeft ? "left-5" : "right-5"} z-50 group select-none`}
       aria-label={`${label} ${phone}`}
     >
       <div className="flex items-center gap-3">

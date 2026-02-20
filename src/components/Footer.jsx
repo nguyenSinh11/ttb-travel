@@ -1,4 +1,10 @@
+import { Link } from "react-router-dom";
 import { Facebook, Youtube, Linkedin, MapPin, Phone } from "lucide-react";
+import { COMPANY } from "../config/company";
+
+const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  COMPANY.address
+)}`;
 
 export default function Footer() {
   return (
@@ -8,29 +14,29 @@ export default function Footer() {
           {/* COL 1 */}
           <div>
             <h3 className="font-extrabold tracking-wide text-lg text-white">
-              TTB TRAVEL
+              {COMPANY.brand}
             </h3>
 
             <ul className="mt-6 space-y-3 text-emerald-100/70">
               <li>
-                <a className="hover:text-white transition" href="#">
-                  About us
-                </a>
+                <Link className="hover:text-white transition" to="/about">
+                  About Us
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Terms of sale
-                </a>
+                <Link className="hover:text-white transition" to="/terms">
+                  Terms & Conditions
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Privacy policy
-                </a>
+                <Link className="hover:text-white transition" to="/privacy">
+                  Privacy Policy
+                </Link>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
+                <Link className="hover:text-white transition" to="/covid">
                   Covid-19
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -38,29 +44,33 @@ export default function Footer() {
           {/* COL 2 */}
           <div>
             <h3 className="font-extrabold tracking-wide text-lg text-white">
-              OUR RESPONSIBLE APPROACH
+              COMPANY
             </h3>
 
             <ul className="mt-6 space-y-3 text-emerald-100/70">
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Manifesto
-                </a>
+                <span className="text-emerald-100/70">
+                  Legal name:{" "}
+                  <span className="text-white/90">{COMPANY.legalName}</span>
+                </span>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Our partners
-                </a>
+                <span className="text-emerald-100/70">
+                  Short name:{" "}
+                  <span className="text-white/90">{COMPANY.shortName}</span>
+                </span>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Vietnam pledge
-                </a>
+                <span className="text-emerald-100/70">
+                  Tax code:{" "}
+                  <span className="text-white/90">{COMPANY.taxCode}</span>
+                </span>
               </li>
               <li>
-                <a className="hover:text-white transition" href="#">
-                  Sustainable tourism criteria
-                </a>
+                <span className="text-emerald-100/70">
+                  Representative:{" "}
+                  <span className="text-white/90">{COMPANY.representative}</span>
+                </span>
               </li>
             </ul>
           </div>
@@ -68,16 +78,33 @@ export default function Footer() {
           {/* COL 3 */}
           <div>
             <h3 className="font-extrabold tracking-wide text-lg text-white">
-              BROCHURE
+              MAP
             </h3>
 
-            <a
-              href="#"
-              className="mt-6 block rounded-2xl overflow-hidden border border-emerald-400/20 hover:border-emerald-300/40 transition"
-            >
-              <div className="aspect-[4/3] bg-emerald-900/30 flex items-center justify-center text-emerald-100/60 text-sm tracking-wide">
-                Brochure Image
+            <div className="mt-6 rounded-2xl overflow-hidden border border-emerald-400/20 bg-emerald-900/20">
+              <div className="aspect-[4/3] w-full">
+                <iframe
+                  title="Google Map"
+                  src={`https://www.google.com/maps?q=${encodeURIComponent(
+                    COMPANY.address
+                  )}&output=embed`}
+                  className="h-full w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
+            </div>
+
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                COMPANY.address
+              )}`}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-4 inline-block text-sm font-semibold text-emerald-200 hover:text-white transition"
+            >
+              OPEN IN GOOGLE MAPS →
             </a>
           </div>
 
@@ -90,23 +117,24 @@ export default function Footer() {
             <div className="mt-6 space-y-4 text-emerald-100/80">
               <p className="flex gap-3">
                 <MapPin size={18} className="mt-1 opacity-80" />
-                <span>
-                  204 Pho Duc Chinh <br />
-                  Ba Dinh District <br />
-                  Hanoi, Vietnam
-                </span>
+                <span>{COMPANY.address}</span>
               </p>
 
               <p className="flex gap-3 items-center">
                 <Phone size={18} className="opacity-80" />
-                <span>Tel: (+84) – 906288031</span>
+                <a
+                  className="hover:text-white transition"
+                  href={`tel:${COMPANY.phone}`}
+                >
+                  {COMPANY.phone}
+                </a>
               </p>
 
               <a
                 className="inline-block mt-2 font-semibold text-emerald-200 hover:text-white transition"
                 target="_blank"
                 rel="noreferrer"
-                href="https://www.google.com/maps"
+                href={mapUrl}
               >
                 GET DIRECTIONS »
               </a>
@@ -143,8 +171,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-14 pt-8 border-t border-emerald-400/15 text-emerald-100/60 text-sm flex flex-col md:flex-row items-center justify-between gap-3">
-          <div>© 2026 TTB-Travel. All rights reserved</div>
-          <div className="text-xs opacity-70">Crafted with care · Sustainable journeys</div>
+          <div>© 2026 {COMPANY.brand}. All rights reserved.</div>
+          <div className="text-xs opacity-70">Deep Indochina journeys</div>
         </div>
       </div>
     </footer>

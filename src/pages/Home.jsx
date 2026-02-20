@@ -9,6 +9,7 @@ import Reveal from "../components/Reveal";
 import PageLoader from "../components/PageLoader";
 import SupportDock from "../components/SupportDock";
 import CallFloat from "../components/CallFloat";
+import SupportRightBar from "../components/SupportRightBar";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -24,12 +25,19 @@ export default function Home() {
 
       {/* Customer support floating actions */}
       <SupportDock
-        messengerUrl=""
-        zaloUrl=""
-        email="lienhe@vntax.net"
+        messengerUrl="https://www.facebook.com/"
+        zaloUrl="https://zalo.me"
+        email="support@ttbtravel.com"
         phone="0437125999"
       />
-      <CallFloat phone="0437125999" label="Gọi ngay" position="left" />
+      <SupportRightBar
+        phone="0437125999"
+        facebookUrl="https://www.facebook.com/"
+        zaloUrl="https://zalo.me"
+        email="support@ttbtravel.com"
+      />
+
+      {/* <CallFloat phone="0437125999" label="Call Now" position="left" /> */}
 
       {!loading && (
         <>
@@ -42,7 +50,7 @@ export default function Home() {
               <Reveal className="lg:col-span-5" delay={100}>
                 <div className="rounded-2xl overflow-hidden bg-slate-100 border border-slate-200">
                   <img
-                    src="/images/news/congty1.jpg"
+                    src="/images/news/VietNamsin.jpeg"
                     alt="About company"
                     className="h-full w-full object-cover"
                   />

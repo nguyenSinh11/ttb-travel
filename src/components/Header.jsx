@@ -9,66 +9,67 @@ const navItemClass = ({ isActive }) =>
 
 function Dropdown({ label, items }) {
   const [open, setOpen] = useState(false);
-  return (
+
+return (
     <div
       className="relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <button className="px-3 py-2 text-sm font-semibold text-slate-700 hover:text-slate-900 flex items-center gap-1">
-        {label} <ChevronDown size={16} className="opacity-70" />
+        {label}
+        <ChevronDown size={16} className="opacity-70" />
       </button>
 
       {open && (
-        <div className="absolute left-0 top-full mt-2 w-56 rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden z-50">
-          {items.map((it) => (
-            <Link
-              key={it.href}
-              to={it.href}
-              className="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50"
-            >
-              {it.label}
-            </Link>
-          ))}
+        // This wrapper creates a "hover bridge" (no gap) between the button and the menu
+        <div className="absolute left-0 top-full w-56 pt-2 z-50">
+          <div className="rounded-xl border border-slate-200 bg-white shadow-lg overflow-hidden">
+            {items.map((it) => (
+              <Link
+                key={it.href}
+                to={it.href}
+                className="block px-4 py-3 text-sm text-slate-700 hover:bg-slate-50"
+              >
+                {it.label}
+              </Link>
+            ))}
+          </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-      <div className="container-app h-16 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-lg bg-slate-900 text-white flex items-center justify-center font-black">
-            T
-          </div>
-
-          <div className="leading-tight">
-            <div className="font-extrabold tracking-wide">
-              TAM THAI BAO SERVICES TOURISM JOINT STOCK COMPANY
-            </div>
-            <div className="text-xs text-slate-500 -mt-0.5">
-              Deep Indochina journeys
-            </div>
-          </div>
+      <div className="container-app h-20 flex items-center justify-between">
+        
+        {/* LOGO */}
+        <Link to="/" className="flex items-center">
+          <img
+            src="/images/logo-ttb.jpeg"
+            alt="TTB Travel"
+            className="h-12 w-auto object-contain"
+          />
         </Link>
 
-        <nav className="hidden md:flex items-center">
+        {/* DESKTOP NAV */}
+        <nav className="hidden md:flex items-center gap-2">
           <Dropdown
             label="DESTINATIONS"
             items={[
-              { href: "/tours?dest=VN", label: "Vietnam" },
-              { href: "/tours?dest=SEA", label: "Southeast Asia" },
+              { href: "/destinations/vietnam", label: "Vietnam" },
+              { href: "/destinations/southeast-asia", label: "Southeast Asia" },
             ]}
           />
 
           <Dropdown
             label="EXPERIENCES"
             items={[
-              { href: "/tours?type=cruise", label: "Cruise" },
-              { href: "/tours?type=culture", label: "Culture" },
+              { href: "/experiences/cruise", label: "Cruise" },
+              { href: "/experiences/culture", label: "Culture" },
             ]}
           />
 
@@ -86,13 +87,13 @@ export default function Header() {
 
           <NavLink
             to="/contact"
-            className="ml-2 px-3 py-2 text-sm font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-2"
+            className="ml-2 px-4 py-2 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-lg transition"
           >
-            <span className="inline-block h-2 w-2 rounded-full bg-emerald-600" />
             RESPONSIBLE TRAVEL
           </NavLink>
         </nav>
 
+        {/* MOBILE */}
         <div className="md:hidden">
           <NavLink
             to="/tours"

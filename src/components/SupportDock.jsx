@@ -1,11 +1,23 @@
 import { useMemo, useState } from "react";
 import { MessageCircle, X, Mail, Send, MessagesSquare } from "lucide-react";
 
+function openZaloAppFirst(fallbackUrl = "https://zalo.me") {
+  const deepLink = "zalo://";
+  const timer = setTimeout(() => {
+    window.open(fallbackUrl, "_blank", "noreferrer");
+  }, 800);
+
+  window.location.href = deepLink;
+
+  window.addEventListener("pagehide", () => clearTimeout(timer), { once: true });
+}
+
 export default function SupportDock({
-  messengerUrl = "",
-  zaloUrl = "",
-  email = "lienhe@vntax.net",
+  messengerUrl = "https://www.facebook.com/",
+  zaloUrl = "https://zalo.me",
+  email = "support@ttbtravel.com",
   phone = "0437125999",
+  embedded = false, // ✅ NEW: when true, do not use fixed positioning
 }) {
   const [open, setOpen] = useState(false);
   const [tab, setTab] = useState("quick"); // quick | live
@@ -13,18 +25,18 @@ export default function SupportDock({
 
   const defaultBody = useMemo(() => {
     return [
-      "Chào anh/chị, em cần tư vấn tour.",
+      "Hello, I would like to get tour consultation.",
       "",
-      `Họ tên: ${form.name || "(chưa nhập)"}`,
-      `SĐT: ${form.phone || phone || "(chưa nhập)"}`,
-      `Nội dung: ${form.note || "(chưa nhập)"}`,
+      `Full name: ${form.name || "(not provided)"}`,
+      `Phone: ${form.phone || phone || "(not provided)"}`,
+      `Message: ${form.note || "(not provided)"}`,
       "",
-      "Cảm ơn anh/chị!",
+      "Thank you!",
     ].join("\n");
   }, [form, phone]);
 
   const mailtoHref = useMemo(() => {
-    const subject = encodeURIComponent("Yêu cầu tư vấn tour");
+    const subject = encodeURIComponent("Tour consultation request");
     const body = encodeURIComponent(defaultBody);
     return `mailto:${email}?subject=${subject}&body=${body}`;
   }, [email, defaultBody]);
@@ -33,7 +45,7 @@ export default function SupportDock({
     return [
       messengerUrl && {
         key: "messenger",
-        label: "Messenger",
+        label: "Facebook",
         href: messengerUrl,
         icon: <MessagesSquare className="h-5 w-5" />,
       },
@@ -45,7 +57,7 @@ export default function SupportDock({
       },
       {
         key: "email",
-        label: "Gửi email nhanh",
+        label: "Quick email",
         href: mailtoHref,
         icon: <Mail className="h-5 w-5" />,
       },
@@ -55,22 +67,20 @@ export default function SupportDock({
   const canShowQuick = quickItems.length > 0;
 
   return (
-    <div className="fixed bottom-5 right-5 z-50">
+    <div className={embedded ? "relative" : "fixed bottom-5 right-5 z-50"}>
       {open && (
         <div className="mb-3 w-[310px] max-w-[calc(100vw-40px)] rounded-2xl border border-slate-200 bg-white/90 backdrop-blur shadow-2xl overflow-hidden">
-          {/* Header */}
           <div className="px-4 py-3 bg-slate-900 text-white flex items-center justify-between">
-            <div className="font-semibold text-sm">Hỗ trợ khách hàng</div>
+            <div className="font-semibold text-sm">Customer Support</div>
             <button
               onClick={() => setOpen(false)}
               className="p-1 rounded-lg hover:bg-white/10 transition"
-              aria-label="Đóng"
+              aria-label="Close"
             >
               <X className="h-5 w-5" />
             </button>
           </div>
 
-          {/* Tabs */}
           <div className="px-3 pt-3">
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -81,7 +91,7 @@ export default function SupportDock({
                     : "bg-white border-slate-200 hover:bg-slate-50"
                 }`}
               >
-                Kênh chat
+                Chat channels
               </button>
               <button
                 onClick={() => setTab("live")}
@@ -96,7 +106,6 @@ export default function SupportDock({
             </div>
           </div>
 
-          {/* Content */}
           <div className="p-3">
             {tab === "quick" && (
               <div className="space-y-2">
@@ -108,6 +117,12 @@ export default function SupportDock({
                       target={it.href.startsWith("mailto:") ? "_self" : "_blank"}
                       rel="noreferrer"
                       className="flex items-center gap-3 px-3 py-3 rounded-xl border border-slate-200 hover:bg-slate-50 transition active:scale-[0.99]"
+                      onClick={(e) => {
+                        if (it.key === "zalo") {
+                          e.preventDefault();
+                          openZaloAppFirst(it.href);
+                        }
+                      }}
                     >
                       <div className="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center">
                         {it.icon}
@@ -119,9 +134,8 @@ export default function SupportDock({
                   ))
                 ) : (
                   <div className="text-sm text-slate-600 leading-relaxed">
-                    Hiện chưa cấu hình Messenger/Zalo. Bạn có thể dùng tab{" "}
-                    <span className="font-semibold">Live chat</span> để gửi nhanh
-                    yêu cầu tư vấn.
+                    Facebook/Zalo is not configured yet. You can use the{" "}
+                    <span className="font-semibold">Live chat</span> tab to send a quick request.
                   </div>
                 )}
 
@@ -136,7 +150,6 @@ export default function SupportDock({
                 className="space-y-3"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  // fallback đơn giản: mở email soạn sẵn
                   window.location.href = mailtoHref;
                 }}
               >
@@ -144,19 +157,19 @@ export default function SupportDock({
                   <input
                     value={form.name}
                     onChange={(e) => setForm((s) => ({ ...s, name: e.target.value }))}
-                    placeholder="Họ tên"
+                    placeholder="Full name"
                     className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-900/20"
                   />
                   <input
                     value={form.phone}
                     onChange={(e) => setForm((s) => ({ ...s, phone: e.target.value }))}
-                    placeholder="Số điện thoại"
+                    placeholder="Phone number"
                     className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-900/20"
                   />
                   <textarea
                     value={form.note}
                     onChange={(e) => setForm((s) => ({ ...s, note: e.target.value }))}
-                    placeholder="Bạn cần tư vấn tour nào? Ngày đi? Số người?"
+                    placeholder="What tour do you need? Travel date? Number of guests?"
                     rows={3}
                     className="w-full rounded-xl border border-slate-200 px-3 py-2.5 text-sm outline-none focus:ring-2 focus:ring-slate-900/20 resize-none"
                   />
@@ -166,7 +179,7 @@ export default function SupportDock({
                   <a
                     href={mailtoHref}
                     className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-3 py-2 text-sm font-semibold hover:bg-slate-50 transition"
-                    title="Mở email soạn sẵn"
+                    title="Open a pre-filled email"
                   >
                     <Mail className="h-4 w-4" />
                     Email
@@ -177,14 +190,13 @@ export default function SupportDock({
                     className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 text-sm font-semibold shadow-lg transition active:scale-95"
                   >
                     <Send className="h-4 w-4" />
-                    Gửi nhanh
+                    Send
                   </button>
                 </div>
 
                 <div className="text-[12px] text-slate-500 leading-relaxed">
-                  * Live chat ở bản này gửi nhanh qua email (nhẹ, dễ test). Khi bạn
-                  muốn live chat “đúng nghĩa”, mình sẽ tích hợp Formspree / Tawk /
-                  Crisp sau.
+                  * This live chat currently sends a quick email (lightweight and easy to test).
+                  You can integrate a real live chat later (e.g., Tawk, Crisp).
                 </div>
               </form>
             )}
@@ -192,14 +204,13 @@ export default function SupportDock({
         </div>
       )}
 
-      {/* Floating button */}
       <button
         onClick={() => setOpen((v) => !v)}
         className="group flex items-center gap-3 select-none"
-        aria-label="Mở chat hỗ trợ"
+        aria-label="Open support chat"
       >
         <div className="hidden sm:block rounded-full bg-slate-900/90 backdrop-blur text-white text-xs px-3 py-2 shadow-lg opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition">
-          Chat hỗ trợ
+          Support chat
         </div>
 
         <div className="relative">

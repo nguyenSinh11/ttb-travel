@@ -20,6 +20,21 @@ export default function HeroSlider() {
         title: "HOANG SU PHI",
         subtitle: "Au coeur des rizières en terrasses",
       },
+       {
+        img: "/images/slider/canhdepvn1.jpg",
+        title: "VIETNAM",
+        subtitle: "Everything has beauty, but not everyone sees it",
+      },
+        {
+        img: "/images/slider/canhdepvn2.jpg",
+        title: "VietNam is the best",
+        subtitle: "Work hard, dream big",
+      },
+         {
+        img: "/images/slider/canhdepvn3.jpg",
+        title: "VietNam SaPa",
+        subtitle: " A winner never stops trying.",
+      },
     ],
     []
   );
@@ -175,7 +190,7 @@ export default function HeroSlider() {
                 className="px-6 py-3 rounded-xl bg-white text-slate-900 font-black
                            shadow-lg shadow-black/20 transition hover:-translate-y-0.5 hover:shadow-xl"
               >
-                Xem tour
+                See more tour
               </Link>
 
               <Link
@@ -183,7 +198,7 @@ export default function HeroSlider() {
                 className="px-6 py-3 rounded-xl border border-white/25 text-white font-black
                            transition hover:bg-white/10 hover:-translate-y-0.5 backdrop-blur"
               >
-                Xem bản tin
+                View the news
               </Link>
             </div>
           </div>
