@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function TourInquiryForm({ tourTitle }) {
-  const FORMSPREE_URL = "https://formspree.io/f/xqeddoqa";
+  const FORMSPREE_URL = "https://formspree.io/f/xreaavqd";
   // 👉 replace with your own Formspree endpoint if needed
 
   const [form, setForm] = useState({
